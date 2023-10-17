@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:nec_it_frontend/widgets/screens/assign_task_screen.dart';
+import 'package:nec_it_frontend/presentations/screens/assign_task_screen/assign_task_screen.dart';
 
 class AssignTaskButton extends StatelessWidget {
   const AssignTaskButton({super.key});

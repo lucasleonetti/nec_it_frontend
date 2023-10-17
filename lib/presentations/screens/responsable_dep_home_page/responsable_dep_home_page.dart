@@ -8,16 +8,8 @@ class ResponsableDepHomePage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Departamento de IT',
-            style: TextStyle(fontSize: 20),
-            textWidthBasis: TextWidthBasis.longestLine),
+        title: const Text('Departamento de IT'),
         centerTitle: true,
-        leading: IconButton(
-          icon: const Icon(Icons.menu),
-          onPressed: () {
-            // TODO: Open drawer
-          },
-        ),
         actions: [
           IconButton(
               onPressed: () {
@@ -32,7 +24,6 @@ class ResponsableDepHomePage extends StatelessWidget {
           LogoNecItBlack(),
           Text(
             'Responsable de departamento',
-            style: TextStyle(fontSize: 20, fontWeight: FontWeight.normal),
           ),
         ],
       ),

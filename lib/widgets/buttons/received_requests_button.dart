@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:nec_it_frontend/widgets/screens/received_request_screen.dart';
+import 'package:nec_it_frontend/presentations/screens/received_request_screen/received_request_screen.dart';
 
 class ReceivedRequestsButton extends StatelessWidget {
   const ReceivedRequestsButton({Key? key}) : super(key: key);

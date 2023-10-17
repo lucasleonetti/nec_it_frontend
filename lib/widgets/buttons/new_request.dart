@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:nec_it_frontend/widgets/screens/new_request_screen.dart';
+import 'package:nec_it_frontend/presentations/screens/new_request_screen/new_request_screen.dart';
 
 class NewRequestButton extends StatelessWidget {
   const NewRequestButton({Key? key}) : super(key: key);
