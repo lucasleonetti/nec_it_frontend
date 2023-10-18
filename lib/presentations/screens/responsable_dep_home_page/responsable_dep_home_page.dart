@@ -1,9 +1,6 @@
-// ignore_for_file: unused_element
-
 import 'package:animate_do/animate_do.dart';
 import 'package:flutter/material.dart';
 import 'package:nec_it_frontend/widgets/images/logo_necit_black.dart';
-
 import '../../../config/theme/app_theme.dart';
 
 class ResponsableDepHomePage extends StatelessWidget {
