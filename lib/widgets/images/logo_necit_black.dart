@@ -5,11 +5,13 @@ class LogoNecItBlack extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Image(
-      alignment: Alignment.center,
-      image: AssetImage('assets/logo/necit_logo_black-removebg-preview.png'),
-      height: 200,
-      width: 200,
+    return const Center(
+      child: SizedBox(
+        child: Image(
+          alignment: Alignment.center,
+          image: AssetImage('assets/logo/Nec_it_Logo-removebg-preview.png'),
+        ),
+      ),
     );
   }
 }
