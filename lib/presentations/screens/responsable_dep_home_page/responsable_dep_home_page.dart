@@ -27,9 +27,7 @@ class ResponsableDepHomePage extends StatelessWidget {
 }
 
 class _BottomNavigatorBar extends StatelessWidget {
-  const _BottomNavigatorBar({
-    super.key,
-  });
+  const _BottomNavigatorBar();
 
   @override
   Widget build(BuildContext context) {
