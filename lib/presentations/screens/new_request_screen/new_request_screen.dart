@@ -11,7 +11,7 @@ class NewRequestScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('New Request'),
+        title: const Text('Nueva Solicitud'),
       ),
       body: const _NewRequestHomeScreen(),
       bottomNavigationBar: const _BottomNavigatorBar(),
