@@ -71,9 +71,9 @@ class _ColaboratorDashboard extends StatelessWidget {
               const Row(
                 mainAxisAlignment: MainAxisAlignment.spaceAround,
                 children: [
-                  Text('Not Completed',
+                  Text('Pendiente',
                       style: TextStyle(fontWeight: FontWeight.w500)),
-                  Text('Completed',
+                  Text('Completada',
                       style: TextStyle(fontWeight: FontWeight.w500)),
                 ],
               ),
@@ -88,7 +88,7 @@ class _ColaboratorDashboard extends StatelessWidget {
                           color: Colors.red.shade200,
                         ),
                         child: const Center(
-                          child: Text('Not completed tasks'),
+                          child: Text('Pending tasks'),
                         ),
                       ),
                     ),
