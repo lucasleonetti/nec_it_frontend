@@ -1,5 +1,3 @@
-// ignore_for_file: unused_element
-
 import 'package:animate_do/animate_do.dart';
 import 'package:flutter/material.dart';
 import '../../../config/theme/app_theme.dart';
@@ -27,7 +25,7 @@ class ColaboratorDashboardScreen extends StatelessWidget {
 }
 
 class _BottomNavigatorBar extends StatelessWidget {
-  const _BottomNavigatorBar({super.key});
+  const _BottomNavigatorBar();
 
   @override
   Widget build(BuildContext context) {
@@ -59,9 +57,7 @@ class _BottomNavigatorBar extends StatelessWidget {
 }
 
 class _ColaboratorDashboard extends StatelessWidget {
-  const _ColaboratorDashboard({
-    super.key,
-  });
+  const _ColaboratorDashboard();
 
   @override
   Widget build(BuildContext context) {
@@ -87,17 +83,24 @@ class _ColaboratorDashboard extends StatelessWidget {
                   children: [
                     Expanded(
                       child: Container(
-                        color: Colors.red.shade200,
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(12),
+                          color: Colors.red.shade200,
+                        ),
                         child: const Center(
-                          child: Text('Not completed tasks go here'),
+                          child: Text('Not completed tasks'),
                         ),
                       ),
                     ),
+                    const SizedBox(width: 5),
                     Expanded(
                       child: Container(
-                        color: Colors.green.shade200,
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(12),
+                          color: Colors.green.shade200,
+                        ),
                         child: const Center(
-                          child: Text('Completed tasks go here'),
+                          child: Text('Completed tasks'),
                         ),
                       ),
                     ),

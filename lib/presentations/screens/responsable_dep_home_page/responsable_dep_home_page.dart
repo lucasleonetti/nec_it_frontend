@@ -86,7 +86,7 @@ class _ResponsableDepHomePage extends StatelessWidget {
         FadeInLeft(child: const LogoNecItBlack()),
         const Text(
           'Responsable de departamento',
-          style: TextStyle(fontSize: 20, fontWeight: FontWeight.w300),
+          style: TextStyle(fontSize: 20, fontWeight: FontWeight.w400),
         ),
       ],
     );
