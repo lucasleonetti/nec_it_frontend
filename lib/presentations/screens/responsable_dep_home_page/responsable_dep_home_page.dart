@@ -1,5 +1,6 @@
 import 'package:animate_do/animate_do.dart';
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 import 'package:nec_it_frontend/widgets/images/logo_necit_black.dart';
 import '../../../config/theme/app_theme.dart';
 
@@ -53,7 +54,9 @@ class _BottomNavigatorBar extends StatelessWidget {
             label: const Text('Asignar Tarea'),
           ),
           ElevatedButton.icon(
-            onPressed: () {},
+            onPressed: () {
+              context.push('/new_request_screen');
+            },
             icon: const Icon(Icons.new_label_rounded),
             label: const Text('Nueva Solicitud'),
           ),
