@@ -10,24 +10,42 @@ class HomeScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+        centerTitle: true,
+        actions: [
+          FloatingActionButton.small(
+            onPressed: () {
+              context.push('/auth_screen');
+            },
+            elevation: 30,
+            child: const Icon(Icons.login_rounded),
+          )
+        ],
+      ),
       body: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
             FadeInDown(child: const LogoNecItBlack()),
-            ElevatedButton.icon(
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 15),
+              child: ElevatedButton.icon(
+                  onPressed: () {
+                    context.push('/responsable_dep_home_page');
+                  },
+                  icon: const Icon(Icons.home_work_outlined),
+                  label: const Text("Responsable De Departamento")),
+            ),
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 15),
+              child: ElevatedButton.icon(
                 onPressed: () {
-                  context.push('/responsable_dep_home_page');
+                  context.push('/colaborator_dashboard_screen');
                 },
-                icon: const Icon(Icons.home_work_outlined),
-                label: const Text("Responsable De Departamento")),
-            ElevatedButton.icon(
-              onPressed: () {
-                context.push('/colaborator_dashboard_screen');
-              },
-              icon: const Icon(Icons.accessibility_outlined),
-              label: const Text("Colaborador"),
+                icon: const Icon(Icons.accessibility_outlined),
+                label: const Text("Colaborador"),
+              ),
             ),
           ],
         ),
