@@ -1,9 +1,12 @@
 import 'package:go_router/go_router.dart';
+import 'package:nec_it_frontend/auth/auth_screen/auth_screen.dart';
 import '../../presentations/screens/screens.dart';
 import '../../presentations/screens/visualize_task_screen.dart/visualize_task_screen.dart';
 
 final appRouter = GoRouter(initialLocation: '/', routes: [
   GoRoute(path: '/', builder: (context, state) => const HomeScreen()),
+  GoRoute(
+      path: '/auth_screen', builder: (context, state) => const AuthScreen()),
   GoRoute(
       path: '/responsable_dep_home_page',
       builder: (context, state) => const ResponsableDepHomePage()),
