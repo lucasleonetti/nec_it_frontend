@@ -23,6 +23,13 @@ class _LoginScreen extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
             FadeInDown(child: const LogoNecItBlack()),
+            const Text(
+              "Iniciar Sesión",
+              style: TextStyle(fontSize: 20, fontWeight: FontWeight.w400),
+            ),
+            const SizedBox(
+              height: 20,
+            ),
             const Padding(
               padding: EdgeInsets.symmetric(horizontal: 15),
               child: TextField(
