@@ -34,25 +34,31 @@ class _BottomNavigatorBar extends StatelessWidget {
   Widget build(BuildContext context) {
     return SizedBox(
       child: Wrap(
-        spacing: 20,
+        spacing: 60,
         crossAxisAlignment: WrapCrossAlignment.center,
-        alignment: WrapAlignment.spaceAround,
+        alignment: WrapAlignment.center,
+        runSpacing: 20,
         children: [
           ElevatedButton.icon(
-            onPressed: () {},
+            onPressed: () {
+              context.push('/received_request_screen');
+            },
             icon: const Icon(Icons.call_received_outlined),
-            label: const Text('Recibidas'),
+            label: const Text('Solicitudes Recibidas'),
           ),
           ElevatedButton.icon(
-            onPressed: () {},
+            onPressed: () {
+              context.push('/sent_request_screen');
+            },
             icon: const Icon(Icons.send_rounded),
-            label: const Text('Enviadas'),
+            label: const Text('Solicitudes Enviadas'),
           ),
           ElevatedButton.icon(
-            onPressed: () {},
-            icon: const Icon(Icons.assignment_ind_outlined),
-            label: const Text('Asignar Tarea'),
-          ),
+              onPressed: () {
+                context.push('/visualize_task_screen');
+              },
+              icon: const Icon(Icons.view_agenda_rounded),
+              label: const Text('Visualizar Tareas')),
           ElevatedButton.icon(
             onPressed: () {
               context.push('/new_request_screen');
