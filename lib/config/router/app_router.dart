@@ -1,9 +1,9 @@
 import 'package:go_router/go_router.dart';
 import '../../presentations/screens/screens.dart';
+import '../../presentations/screens/visualize_task_screen.dart/visualize_task_screen.dart';
 
-final appRouter = GoRouter(initialLocation: '/home_screen', routes: [
-  GoRoute(
-      path: '/home_screen', builder: (context, state) => const HomeScreen()),
+final appRouter = GoRouter(initialLocation: '/', routes: [
+  GoRoute(path: '/', builder: (context, state) => const HomeScreen()),
   GoRoute(
       path: '/responsable_dep_home_page',
       builder: (context, state) => const ResponsableDepHomePage()),
@@ -22,4 +22,7 @@ final appRouter = GoRouter(initialLocation: '/home_screen', routes: [
   GoRoute(
       path: '/sended_request_screen',
       builder: (context, state) => const SendedRequestScreen()),
+  GoRoute(
+      path: '/visualize_task_screen',
+      builder: (context, state) => const VisualizeTaskScreen()),
 ]);
