@@ -32,7 +32,7 @@ class _BottomNavigatorBar extends StatelessWidget {
             textAlign: TextAlign.center,
             style: TextStyle(
                 fontSize: 18,
-                fontWeight: FontWeight.w500,
+                fontWeight: FontWeight.w400,
                 color: AppTheme().getTheme().primaryColor)),
       ),
     );

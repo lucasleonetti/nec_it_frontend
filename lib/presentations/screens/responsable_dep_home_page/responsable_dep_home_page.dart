@@ -11,7 +11,7 @@ class ResponsableDepHomePage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Departamento de IT'),
+        title: const Text('Sistemas'),
         centerTitle: true,
         actions: [
           IconButton(
@@ -74,7 +74,7 @@ class _BottomNavigatorBar extends StatelessWidget {
                   textAlign: TextAlign.center,
                   style: TextStyle(
                       fontSize: 18,
-                      fontWeight: FontWeight.w500,
+                      fontWeight: FontWeight.w400,
                       color: AppTheme().getTheme().primaryColor)),
             ),
           )
