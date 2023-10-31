@@ -37,6 +37,9 @@ class HomeScreen extends StatelessWidget {
                   icon: const Icon(Icons.home_work_outlined),
                   label: const Text("Responsable De Departamento")),
             ),
+            const SizedBox(
+              height: 20,
+            ),
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 15),
               child: ElevatedButton.icon(
