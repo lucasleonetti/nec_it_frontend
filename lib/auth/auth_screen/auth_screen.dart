@@ -1,6 +1,6 @@
 import 'package:animate_do/animate_do.dart';
 import 'package:flutter/material.dart';
-import 'package:nec_it_frontend/widgets/images/logo_necit_black.dart';
+import 'package:nec_it_frontend/widgets/logo/logo_necit_black.dart';
 
 class AuthScreen extends StatelessWidget {
   const AuthScreen({super.key});

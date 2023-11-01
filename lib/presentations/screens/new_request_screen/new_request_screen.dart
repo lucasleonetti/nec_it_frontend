@@ -2,7 +2,7 @@ import 'package:animate_do/animate_do.dart';
 import 'package:dropdown_button2/dropdown_button2.dart';
 import 'package:flutter/material.dart';
 import '../../../config/theme/app_theme.dart';
-import '../../../widgets/images/logo_necit_black.dart';
+import '../../../widgets/logo/logo_necit_black.dart';
 
 class NewRequestScreen extends StatelessWidget {
   const NewRequestScreen({super.key});
@@ -135,6 +135,8 @@ class _NewRequestBodyForm extends StatelessWidget {
                   border: OutlineInputBorder(
                     borderRadius: BorderRadius.circular(15),
                   ),
+                  icon: const Icon(Icons.description_outlined),
+                  iconColor: Color(AppTheme().getTheme().primaryColor.value),
                 ),
               ),
             ),
