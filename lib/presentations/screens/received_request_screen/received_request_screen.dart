@@ -1,8 +1,10 @@
 import 'package:animate_do/animate_do.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 import 'package:nec_it_frontend/config/theme/app_theme.dart';
-import 'package:nec_it_frontend/presentations/screens/received_request_screen/service/received_request_service.dart';
+import 'package:nec_it_frontend/model/request_model/request_model.dart';
+import 'package:nec_it_frontend/services/get_requests/received_request_provider.dart';
 import '../../../widgets/logo/logo_necit_black.dart';
 
 class ReceivedRequestScreen extends StatelessWidget {
@@ -63,53 +65,76 @@ class _ReceivedRequestHomeScreen extends StatelessWidget {
           style: TextStyle(fontSize: 20, fontWeight: FontWeight.w400),
         ),
         const SizedBox(height: 10),
-        _RequestList()
+        _RequestListView(),
       ],
     );
   }
 }
 
-class _RequestList extends StatelessWidget {
+class _RequestListView extends ConsumerWidget {
   @override
-  Widget build(BuildContext context) {
-    return Center(
-      child: FutureBuilder<void>(
-          future: SolicitudesProvider().cargarSolicitudes(),
-          builder: (context, snapshot) {
-            if (snapshot.connectionState == ConnectionState.waiting) {
-              return const Center(child: CircularProgressIndicator());
-            } else if (snapshot.hasError) {
-              return const Center(
-                  child: Text('Error al cargar las solicitudes'));
-            } else {
-              return _RequestListView();
-            }
-          }),
+  Widget build(BuildContext context, WidgetRef ref) {
+    final solicitudes = ref.watch(solicitudesProvider);
+
+    return SingleChildScrollView(
+      child: ListView.builder(
+        shrinkWrap: true,
+        itemCount: solicitudes.when(
+          data: (data) => data.length,
+          loading: () => 0,
+          error: (error, stackTrace) => 0,
+        ),
+        itemBuilder: (context, index) {
+          return solicitudes.when(
+            data: (data) => _RequestCard(
+              solicitud: data[index],
+            ),
+            loading: () => const Center(child: CircularProgressIndicator()),
+            error: (error, stackTrace) =>
+                const Center(child: Text('Error al cargar las solicitudes')),
+          );
+        },
+      ),
     );
   }
 }
 
-class _RequestListView extends StatelessWidget {
+class _RequestCard extends StatelessWidget {
+  final Solicitud solicitud;
+
+  const _RequestCard({Key? key, required this.solicitud}) : super(key: key);
+
   @override
   Widget build(BuildContext context) {
-    return ListView(
-      children: SolicitudesProvider().solicitudes.map((solicitud) {
-        return GestureDetector(
-          child: Card(
-            elevation: 10,
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                Text("ID: ${solicitud.id}"),
-                Text("Descripción: ${solicitud.descripcion}"),
-                Text("Estado: ${solicitud.estado}"),
-                Text("Prioridad: ${solicitud.prioridad}"),
-                Text("Origen: ${solicitud.origen}"),
-              ],
-            ),
+    return SingleChildScrollView(
+      child: Card(
+        child: Padding(
+          padding: const EdgeInsets.all(16.0),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Text(
+                solicitud.descripcion,
+                style: Theme.of(context).textTheme.titleLarge,
+              ),
+              const SizedBox(height: 8.0),
+              Row(
+                children: [
+                  Text(
+                    solicitud.estado,
+                    style: Theme.of(context).textTheme.titleMedium,
+                  ),
+                  const SizedBox(width: 8.0),
+                  Text(
+                    solicitud.origen,
+                    style: Theme.of(context).textTheme.titleMedium,
+                  ),
+                ],
+              ),
+            ],
           ),
-        );
-      }).toList(),
+        ),
+      ),
     );
   }
 }
