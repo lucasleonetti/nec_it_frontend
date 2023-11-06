@@ -5,11 +5,11 @@ part 'request_model.g.dart';
 @freezed
 class Solicitud with _$Solicitud {
   factory Solicitud({
-    required int id,
-    required String descripcion,
-    required String estado,
-    required String prioridad,
-    required String origen,
+    required final int id,
+    required final String descripcion,
+    required final String estado,
+    required final String prioridad,
+    required final String origen,
   }) = _Solicitud;
 
   factory Solicitud.fromJson(Map<String, dynamic> json) =>

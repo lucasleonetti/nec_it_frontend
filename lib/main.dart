@@ -5,6 +5,7 @@ import 'package:nec_it_frontend/config/theme/app_theme.dart';
 // ignore: unused_import
 import 'package:flutter/foundation.dart';
 
+
 void main() {
   runApp(
     const ProviderScope(
