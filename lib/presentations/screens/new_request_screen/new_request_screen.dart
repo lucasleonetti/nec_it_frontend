@@ -12,6 +12,7 @@ class NewRequestScreen extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: const Text('Nueva Solicitud'),
+        centerTitle: true,
       ),
       body: const _NewRequestHomeScreen(),
       bottomNavigationBar: const _BottomNavigatorBar(),

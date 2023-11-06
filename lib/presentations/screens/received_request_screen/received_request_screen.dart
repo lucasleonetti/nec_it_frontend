@@ -13,6 +13,7 @@ class ReceivedRequestScreen extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: const Text('Solicitudes Recibidas'),
+        centerTitle: true,
       ),
       body: _ReceivedRequestHomeScreen(),
       bottomNavigationBar: const _BottomNavigatorBar(),
@@ -23,18 +24,21 @@ class ReceivedRequestScreen extends StatelessWidget {
 class _ReceivedRequestHomeScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return SingleChildScrollView(
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.center,
-        children: [
-          const SizedBox(height: 10),
-          const Text(
-            'Departamento de Sistemas',
-            style: TextStyle(fontSize: 20, fontWeight: FontWeight.w400),
-          ),
-          const SizedBox(height: 10),
-          _RequestListView(),
-        ],
+    return Center(
+      child: SingleChildScrollView(
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.center,
+          children: [
+            const SizedBox(height: 10),
+            const Text(
+              'Departamento de Sistemas',
+              textAlign: TextAlign.center,
+              style: TextStyle(fontSize: 20, fontWeight: FontWeight.w400),
+            ),
+            const SizedBox(height: 10),
+            _RequestListView(),
+          ],
+        ),
       ),
     );
   }

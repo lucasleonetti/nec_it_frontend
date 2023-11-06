@@ -34,7 +34,7 @@ class _BottomNavigatorBar extends StatelessWidget {
   Widget build(BuildContext context) {
     return SizedBox(
       child: Wrap(
-        spacing: 60,
+        spacing: 50,
         crossAxisAlignment: WrapCrossAlignment.center,
         alignment: WrapAlignment.center,
         runSpacing: 20,
@@ -48,7 +48,7 @@ class _BottomNavigatorBar extends StatelessWidget {
           ),
           ElevatedButton.icon(
             onPressed: () {
-              context.push('/sent_request_screen');
+              context.push('/sended_request_screen');
             },
             icon: const Icon(Icons.send_rounded),
             label: const Text('Solicitudes Enviadas'),
