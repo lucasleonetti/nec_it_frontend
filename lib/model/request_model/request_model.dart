@@ -14,4 +14,6 @@ class Solicitud with _$Solicitud {
 
   factory Solicitud.fromJson(Map<String, dynamic> json) =>
       _$SolicitudFromJson(json);
+
+
 }

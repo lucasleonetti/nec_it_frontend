@@ -1,11 +1,9 @@
-import 'package:animate_do/animate_do.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 import 'package:nec_it_frontend/config/theme/app_theme.dart';
 import 'package:nec_it_frontend/model/request_model/request_model.dart';
 import 'package:nec_it_frontend/api/get_requests/received_request_provider.dart';
-import '../../../widgets/logo/logo_necit_black.dart';
 
 class ReceivedRequestScreen extends StatelessWidget {
   const ReceivedRequestScreen({super.key});
@@ -25,17 +23,19 @@ class ReceivedRequestScreen extends StatelessWidget {
 class _ReceivedRequestHomeScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.center,
-      children: [
-        FadeInLeft(child: const LogoNecItBlack()),
-        const Text(
-          'Departamento de Sistemas',
-          style: TextStyle(fontSize: 20, fontWeight: FontWeight.w400),
-        ),
-        const SizedBox(height: 10),
-        _RequestListView(),
-      ],
+    return SingleChildScrollView(
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.center,
+        children: [
+          const SizedBox(height: 10),
+          const Text(
+            'Departamento de Sistemas',
+            style: TextStyle(fontSize: 20, fontWeight: FontWeight.w400),
+          ),
+          const SizedBox(height: 10),
+          _RequestListView(),
+        ],
+      ),
     );
   }
 }
@@ -79,27 +79,64 @@ class _RequestCard extends StatelessWidget {
     return SingleChildScrollView(
       child: Card(
         child: Padding(
-          padding: const EdgeInsets.all(16.0),
+          padding: const EdgeInsets.symmetric(horizontal: 16.0, vertical: 10),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Text(
-                solicitud.descripcion,
-                style: Theme.of(context).textTheme.titleLarge,
+              RichText(
+                text: TextSpan(
+                  text: 'Descripcion: ',
+                  style: DefaultTextStyle.of(context)
+                      .style
+                      .copyWith(fontWeight: FontWeight.w500),
+                  children: <TextSpan>[
+                    TextSpan(
+                        text: solicitud.descripcion,
+                        style: TextStyle(fontWeight: FontWeight.normal)),
+                  ],
+                ),
               ),
-              const SizedBox(height: 8.0),
-              Row(
-                children: [
-                  Text(
-                    solicitud.estado,
-                    style: Theme.of(context).textTheme.titleMedium,
-                  ),
-                  const SizedBox(width: 8.0),
-                  Text(
-                    solicitud.origen,
-                    style: Theme.of(context).textTheme.titleMedium,
-                  ),
-                ],
+              const SizedBox(height: 10),
+              RichText(
+                text: TextSpan(
+                  text: 'Estado: ',
+                  style: DefaultTextStyle.of(context)
+                      .style
+                      .copyWith(fontWeight: FontWeight.w500),
+                  children: <TextSpan>[
+                    TextSpan(
+                        text: solicitud.estado,
+                        style: TextStyle(fontWeight: FontWeight.normal)),
+                  ],
+                ),
+              ),
+              const SizedBox(height: 10),
+              RichText(
+                text: TextSpan(
+                  text: 'Origen: ',
+                  style: DefaultTextStyle.of(context)
+                      .style
+                      .copyWith(fontWeight: FontWeight.w500),
+                  children: <TextSpan>[
+                    TextSpan(
+                        text: solicitud.origen,
+                        style: TextStyle(fontWeight: FontWeight.normal)),
+                  ],
+                ),
+              ),
+              const SizedBox(height: 10),
+              RichText(
+                text: TextSpan(
+                  text: 'Prioridad: ',
+                  style: DefaultTextStyle.of(context)
+                      .style
+                      .copyWith(fontWeight: FontWeight.w500),
+                  children: <TextSpan>[
+                    TextSpan(
+                        text: solicitud.prioridad,
+                        style: TextStyle(fontWeight: FontWeight.normal)),
+                  ],
+                ),
               ),
             ],
           ),

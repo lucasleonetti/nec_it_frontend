@@ -2,9 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:nec_it_frontend/config/router/app_router.dart';
 import 'package:nec_it_frontend/config/theme/app_theme.dart';
-// ignore: unused_import
-import 'package:flutter/foundation.dart';
-
 
 void main() {
   runApp(
