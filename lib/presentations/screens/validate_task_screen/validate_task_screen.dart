@@ -60,7 +60,7 @@ class _ValidateTaskBodyForm extends ConsumerWidget {
                   border: OutlineInputBorder(
                     borderRadius: BorderRadius.circular(15),
                   ),
-                  icon: const Icon(Icons.assignment_ind_outlined),
+                  icon: const Icon(Icons.pending_actions),
                   iconColor: Color(AppTheme().getTheme().primaryColor.value)),
               items: solicitudesEnviadas.when(
                 data: (solicitudes) => solicitudes.map((solicitud) {

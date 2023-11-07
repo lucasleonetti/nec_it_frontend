@@ -74,7 +74,7 @@ class _AssignTaskBodyForm extends ConsumerWidget {
                   border: OutlineInputBorder(
                     borderRadius: BorderRadius.circular(15),
                   ),
-                  icon: const Icon(Icons.assignment_ind_outlined),
+                  icon: const Icon(Icons.pending_actions),
                   iconColor: Color(AppTheme().getTheme().primaryColor.value)),
               items: solicitudesAsyncValue.when(
                 data: (solicitudes) => solicitudes.map((solicitud) {
@@ -108,7 +108,7 @@ class _AssignTaskBodyForm extends ConsumerWidget {
                   border: OutlineInputBorder(
                     borderRadius: BorderRadius.circular(15),
                   ),
-                  icon: const Icon(Icons.assignment_ind_outlined),
+                  icon: const Icon(Icons.person_2_rounded),
                   iconColor: Color(AppTheme().getTheme().primaryColor.value)),
               items: colaboratorsAsyncValue.when(
                 data: (colaborator) => colaborator.map((colaborator) {
