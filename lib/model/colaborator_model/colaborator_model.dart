@@ -1,27 +1,18 @@
-class Colaborator {
-  final int id;
-  final String name;
-  final String email;
+import 'package:freezed_annotation/freezed_annotation.dart';
+part 'colaborator_model.freezed.dart';
+part 'colaborator_model.g.dart';
 
-  Colaborator({
-    required this.id,
-    this.name = '-',
-    this.email = '-',
-  });
+@freezed
+class Colaborator with _$Colaborator {
+  factory Colaborator({
+    required final int id,
+    required final String nombre,
+    required final String apellido,
+    required final String email,
+    required final String telefono,
+    required final String departamento,
+  }) = _Colaborator;
 
-  factory Colaborator.fromJson(Map<String, dynamic> json) {
-    return Colaborator(
-      id: json['id'],
-      name: json['name'],
-      email: json['email'],
-    );
-  }
-
-  factory Colaborator.toJson(Colaborator colaborator) {
-    return Colaborator(
-      id: 0,
-      name: '-',
-      email: '-',
-    );
-  }
+  factory Colaborator.fromJson(Map<String, Object?> json) =>
+      _$ColaboratorFromJson(json);
 }
