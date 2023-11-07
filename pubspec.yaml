@@ -31,6 +31,7 @@ dependencies:
   animate_do: ^3.1.2
   build_runner: ^2.4.6
   cupertino_icons: ^1.0.2
+  datetime_picker_formfield_new: ^2.1.0
   dio: ^5.3.3
   dropdown_button2: ^2.3.9
   flutter:
@@ -40,6 +41,7 @@ dependencies:
   freezed_annotation: ^2.4.1
   go_router: ^11.1.4
   graphic: ^2.2.1
+  intl: ^0.18.1
   json_annotation: ^4.8.1
   riverpod: ^2.4.5
   riverpod_annotation: ^2.3.0
