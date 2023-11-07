@@ -1,4 +1,9 @@
+import 'package:animate_do/animate_do.dart';
+import 'package:dropdown_button2/dropdown_button2.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:nec_it_frontend/api/get_sended_request/sended_request_provider.dart';
+import 'package:nec_it_frontend/widgets/logo/logo_necit_black.dart';
 
 import '../../../config/theme/app_theme.dart';
 
@@ -8,12 +13,13 @@ class ValidateTaskScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: AppBar(
-          title: const Text('Validar Tarea'),
-          centerTitle: true,
-        ),
-        body: _ValidateTaskScreen(),
-        bottomNavigationBar: _BottomNavigatorBar());
+      appBar: AppBar(
+        title: const Text('Validar Solicitud'),
+        centerTitle: true,
+      ),
+      body: _ValidateTaskScreen(),
+      bottomNavigationBar: _BottomNavigatorBar(),
+    );
   }
 }
 
@@ -24,15 +30,76 @@ class _ValidateTaskScreen extends StatelessWidget {
       child: Column(
         children: [
           const SizedBox(height: 10),
-          Placeholder(),
+          FadeInDown(child: const LogoNecItBlack()),
+          const SizedBox(height: 10),
+          _ValidateTaskBodyForm(),
         ],
       ),
     );
   }
 }
 
+class _ValidateTaskBodyForm extends ConsumerWidget {
+  const _ValidateTaskBodyForm();
+
+  @override
+  Widget build(BuildContext context, WidgetRef ref) {
+    final solicitudesEnviadas = ref.watch(solicitudesEnviadasProvider);
+
+    return Form(
+      child: Padding(
+        padding: const EdgeInsets.symmetric(horizontal: 15),
+        child: Column(
+          children: [
+            const SizedBox(height: 30),
+            DropdownButtonFormField2<String>(
+              decoration: InputDecoration(
+                  contentPadding: const EdgeInsets.all(10),
+                  hintText: 'Solicitud',
+                  hintStyle: const TextStyle(fontSize: 14),
+                  border: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(15),
+                  ),
+                  icon: const Icon(Icons.assignment_ind_outlined),
+                  iconColor: Color(AppTheme().getTheme().primaryColor.value)),
+              items: solicitudesEnviadas.when(
+                data: (solicitudes) => solicitudes.map((solicitud) {
+                  return DropdownMenuItem(
+                    value: solicitud.id.toString(),
+                    child: Flexible(
+                      child: Text(
+                        '${solicitud.descripcion}: ${solicitud.destino}',
+                        overflow: TextOverflow.ellipsis,
+                        maxLines: 1,
+                        softWrap: true,
+                        style: TextStyle(
+                            fontWeight: FontWeight.w600, fontSize: 12),
+                      ),
+                    ),
+                  );
+                }).toList(),
+                loading: () => [],
+                error: (_, __) => [],
+              ),
+              onChanged: (value) {
+                // Actualiza el estado del formulario
+              },
+            ),
+            const SizedBox(height: 30),
+            ElevatedButton.icon(
+              onPressed: () {},
+              icon: const Icon(Icons.check_box),
+              label: const Text('Validar'),
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+}
+
 class _BottomNavigatorBar extends StatelessWidget {
-  const _BottomNavigatorBar();
+  const _BottomNavigatorBar({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
