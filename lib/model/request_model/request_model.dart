@@ -12,8 +12,6 @@ class Solicitud with _$Solicitud {
     required final String origen,
   }) = _Solicitud;
 
-  factory Solicitud.fromJson(Map<String, dynamic> json) =>
+  factory Solicitud.fromJson(Map<String, Object?> json) =>
       _$SolicitudFromJson(json);
-
-
 }
