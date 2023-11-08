@@ -1,3 +1,5 @@
+// ignore_for_file: unused_field
+
 import 'package:animate_do/animate_do.dart';
 import 'package:dropdown_button2/dropdown_button2.dart';
 import 'package:flutter/material.dart';
@@ -61,12 +63,22 @@ class _NewRequestHomeScreen extends StatelessWidget {
   }
 }
 
-class _NewRequestBodyForm extends StatelessWidget {
+class _NewRequestBodyForm extends StatefulWidget {
   const _NewRequestBodyForm();
+
+  @override
+  _NewRequestBodyFormState createState() => _NewRequestBodyFormState();
+}
+
+class _NewRequestBodyFormState extends State<_NewRequestBodyForm> {
+  final _formKey = GlobalKey<FormState>();
+  String? _destino;
+  String? _prioridad;
 
   @override
   Widget build(BuildContext context) {
     return Form(
+      key: _formKey,
       child: Padding(
         padding: const EdgeInsets.all(10),
         child: Column(
@@ -89,7 +101,7 @@ class _NewRequestBodyForm extends StatelessWidget {
                 value: null,
                 items: const [
                   DropdownMenuItem(value: 'item1', child: Text('Cocina')),
-                  DropdownMenuItem(value: 'item2', child: Text('IT')),
+                  DropdownMenuItem(value: 'item2', child: Text('Sistemas')),
                   DropdownMenuItem(
                       value: 'item3', child: Text('Atencion a alumnos')),
                   DropdownMenuItem(value: 'item4', child: Text('Limpieza')),
@@ -100,8 +112,13 @@ class _NewRequestBodyForm extends StatelessWidget {
                       value: 'item8', child: Text('Mantenimiento')),
                   DropdownMenuItem(
                       value: 'item9', child: Text('Fotocopiadora')),
+                  DropdownMenuItem(value: 'item10', child: Text('Biblioteca')),
                 ],
-                onChanged: (value) {},
+                onChanged: (value) {
+                  setState(() {
+                    _destino = value;
+                  });
+                },
               ),
             ),
             const SizedBox(height: 20),
@@ -123,7 +140,11 @@ class _NewRequestBodyForm extends StatelessWidget {
                 DropdownMenuItem(value: 'item2', child: Text('Media')),
                 DropdownMenuItem(value: 'item3', child: Text('Alta')),
               ],
-              onChanged: (value) {},
+              onChanged: (value) {
+                setState(() {
+                  _prioridad = value;
+                });
+              },
             ),
             const SizedBox(height: 20),
             SizedBox(
@@ -152,7 +173,15 @@ class _NewRequestBodyForm extends StatelessWidget {
                     icon: const Icon(Icons.cancel_outlined),
                     label: const Text('Cancelar')),
                 ElevatedButton.icon(
-                    onPressed: () {},
+                    onPressed: () {
+                      setState(() {
+                        _formKey.currentState!.reset();
+                        _destino = null;
+                        _prioridad = null;
+                      });
+                      ScaffoldMessenger.of(context).showSnackBar(
+                          const SnackBar(content: Text('Solicitud enviada')));
+                    },
                     icon: const Icon(Icons.send_sharp),
                     label: const Text('Enviar')),
               ],
