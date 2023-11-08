@@ -32,34 +32,46 @@ class _BottomNavigatorBar extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return SizedBox(
-      child: Wrap(
-        spacing: 50,
-        crossAxisAlignment: WrapCrossAlignment.center,
-        alignment: WrapAlignment.center,
-        runSpacing: 20,
+    return SingleChildScrollView(
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
         children: [
           ElevatedButton.icon(
+            style: ButtonStyle(
+              minimumSize: MaterialStateProperty.all(Size(200, 50)),
+            ),
             onPressed: () {
               context.push('/received_request_screen');
             },
             icon: const Icon(Icons.call_received_outlined),
             label: const Text('Solicitudes Recibidas'),
           ),
+          const SizedBox(height: 15),
           ElevatedButton.icon(
+            style: ButtonStyle(
+              minimumSize: MaterialStateProperty.all(Size(200, 50)),
+            ),
             onPressed: () {
               context.push('/sended_request_screen');
             },
             icon: const Icon(Icons.send_rounded),
             label: const Text('Solicitudes Enviadas'),
           ),
+          const SizedBox(height: 15),
           ElevatedButton.icon(
+              style: ButtonStyle(
+                minimumSize: MaterialStateProperty.all(Size(200, 50)),
+              ),
               onPressed: () {
                 context.push('/visualize_task_screen');
               },
               icon: const Icon(Icons.view_agenda_rounded),
               label: const Text('Visualizar Tareas')),
+          const SizedBox(height: 15),
           ElevatedButton.icon(
+            style: ButtonStyle(
+              minimumSize: MaterialStateProperty.all(Size(200, 50)),
+            ),
             onPressed: () {
               context.push('/new_request_screen');
             },
