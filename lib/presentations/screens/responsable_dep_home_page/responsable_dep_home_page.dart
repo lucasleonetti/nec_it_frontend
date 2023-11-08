@@ -78,6 +78,7 @@ class _BottomNavigatorBar extends StatelessWidget {
             icon: const Icon(Icons.new_label_rounded),
             label: const Text('Nueva Solicitud'),
           ),
+          const SizedBox(height: 25),
           Padding(
             padding: const EdgeInsets.symmetric(vertical: 20),
             child: SizedBox(
