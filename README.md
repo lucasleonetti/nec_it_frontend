@@ -1,16 +1,20 @@
-# nec_it_frontend
+# NEC IT Technologies - Seminario final de analista de software
 
-A new Flutter project.
+Este es un proyecto desarrollado en Flutter.
 
-## Getting Started
 
-This project is a starting point for a Flutter application.
 
-A few resources to get you started if this is your first Flutter project:
+## Comenzando
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+Estas instrucciones te proporcionarán una copia del proyecto en funcionamiento en tu máquina local para fines de desarrollo y pruebas.
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+### Prerrequisitos
+
+Necesitas tener instalado Flutter y Dart en tu máquina. Para más detalles sobre cómo instalar Flutter, visita [flutter.dev](https://flutter.dev).
+
+### Instalación
+
+1. Clona el repositorio
+
+   ```sh
+   git clone https://github.com/tu_nombre_de_usuario/tu_repositorio.git
