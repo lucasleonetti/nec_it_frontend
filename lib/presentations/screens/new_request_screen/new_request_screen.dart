@@ -150,6 +150,7 @@ class _NewRequestBodyFormState extends State<_NewRequestBodyForm> {
             SizedBox(
               width: double.infinity,
               child: TextFormField(
+                maxLines: 2,
                 decoration: InputDecoration(
                   contentPadding: const EdgeInsets.all(10),
                   hintText: 'Descripcion...',
@@ -160,6 +161,12 @@ class _NewRequestBodyFormState extends State<_NewRequestBodyForm> {
                   icon: const Icon(Icons.description_outlined),
                   iconColor: Color(AppTheme().getTheme().primaryColor.value),
                 ),
+                validator: (value) {
+                  if (value == null || value.isEmpty) {
+                    return 'Por favor, introduce una descripción';
+                  }
+                  return null;
+                },
               ),
             ),
             const SizedBox(
@@ -169,21 +176,44 @@ class _NewRequestBodyFormState extends State<_NewRequestBodyForm> {
               mainAxisAlignment: MainAxisAlignment.spaceAround,
               children: [
                 ElevatedButton.icon(
-                    onPressed: () {},
-                    icon: const Icon(Icons.cancel_outlined),
-                    label: const Text('Cancelar')),
-                ElevatedButton.icon(
                     onPressed: () {
                       setState(() {
                         _formKey.currentState!.reset();
                         _destino = null;
                         _prioridad = null;
                       });
-                      ScaffoldMessenger.of(context).showSnackBar(
-                          const SnackBar(content: Text('Solicitud enviada')));
                     },
-                    icon: const Icon(Icons.send_sharp),
-                    label: const Text('Enviar')),
+                    icon: const Icon(Icons.cancel_outlined),
+                    label: const Text('Cancelar')),
+                ElevatedButton.icon(
+                  onPressed: () {
+                    if (_formKey.currentState!.validate() &&
+                        _destino != null &&
+                        _prioridad != null) {
+                      setState(() {
+                        _formKey.currentState!.reset();
+                        _destino = null;
+                        _prioridad = null;
+                      });
+                      ScaffoldMessenger.of(context).showSnackBar(
+                        const SnackBar(
+                          backgroundColor: Colors.green,
+                          content: Text('Solicitud enviada'),
+                        ),
+                      );
+                    } else {
+                      ScaffoldMessenger.of(context).showSnackBar(
+                        const SnackBar(
+                          backgroundColor: Colors.red,
+                          content: Text(
+                              'Por favor, selecciona un destino y una prioridad'),
+                        ),
+                      );
+                    }
+                  },
+                  icon: const Icon(Icons.send_outlined),
+                  label: const Text('Enviar'),
+                ),
               ],
             ),
           ],
