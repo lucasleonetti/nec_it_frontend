@@ -24,7 +24,7 @@ class AssignTaskScreen extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
               FadeInLeft(child: const LogoNecItBlack()),
-              const _AssignTaskBodyForm(),
+              _AssignTaskBodyForm(),
             ],
           ),
         ),
@@ -52,8 +52,14 @@ class _BottomNavigatorBar extends StatelessWidget {
   }
 }
 
+// ignore: must_be_immutable
 class _AssignTaskBodyForm extends ConsumerWidget {
-  const _AssignTaskBodyForm();
+  _AssignTaskBodyForm();
+
+  final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
+  String? selectedSolicitud = null;
+  String? selectedColaborator = null;
+  DateTime? selectedDate = null;
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
@@ -61,6 +67,7 @@ class _AssignTaskBodyForm extends ConsumerWidget {
     final colaboratorsAsyncValue = ref.watch(colaboratorsProvider);
 
     return Form(
+      key: _formKey,
       child: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 15),
         child: Column(
@@ -96,7 +103,7 @@ class _AssignTaskBodyForm extends ConsumerWidget {
                 error: (_, __) => [],
               ),
               onChanged: (value) {
-                // Actualiza el estado del formulario
+                selectedSolicitud = value;
               },
             ),
             const SizedBox(height: 20),
@@ -130,7 +137,7 @@ class _AssignTaskBodyForm extends ConsumerWidget {
                 error: (_, __) => [],
               ),
               onChanged: (value) {
-                // Actualiza el estado del formulario
+                selectedColaborator = value;
               },
             ),
             const SizedBox(height: 20),
@@ -153,6 +160,7 @@ class _AssignTaskBodyForm extends ConsumerWidget {
                     firstDate: DateTime(1900),
                     initialDate: currentValue ?? DateTime.now(),
                     lastDate: DateTime(2100));
+                selectedDate = date;
                 return date;
               },
               validator: (value) {
@@ -164,9 +172,31 @@ class _AssignTaskBodyForm extends ConsumerWidget {
             ),
             const SizedBox(height: 30),
             ElevatedButton.icon(
-              onPressed: () {},
+              onPressed: () {
+                if (selectedSolicitud != null &&
+                    selectedColaborator != null &&
+                    selectedDate != null) {
+                  ScaffoldMessenger.of(context).showSnackBar(
+                    const SnackBar(
+                      content: Text('Tarea asignada'),
+                      backgroundColor: Colors.green,
+                    ),
+                  );
+                  _formKey.currentState?.reset();
+                  selectedSolicitud = null;
+                  selectedColaborator = null;
+                  selectedDate = null;
+                } else {
+                  ScaffoldMessenger.of(context).showSnackBar(
+                    const SnackBar(
+                      content: Text('Por favor, complete todos los campos'),
+                      backgroundColor: Colors.red,
+                    ),
+                  );
+                }
+              },
               icon: const Icon(Icons.send_and_archive_rounded),
-              label: const Text('Enviar'),
+              label: const Text('Asignar'),
             ),
           ],
         ),

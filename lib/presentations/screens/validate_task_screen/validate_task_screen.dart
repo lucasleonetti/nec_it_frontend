@@ -26,27 +26,34 @@ class ValidateTaskScreen extends StatelessWidget {
 class _ValidateTaskScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return SingleChildScrollView(
-      child: Column(
-        children: [
-          const SizedBox(height: 10),
-          FadeInDown(child: const LogoNecItBlack()),
-          const SizedBox(height: 10),
-          _ValidateTaskBodyForm(),
-        ],
+    return FadeInDown(
+      child: SingleChildScrollView(
+        child: Column(
+          children: [
+            const SizedBox(height: 10),
+            FadeInDown(child: const LogoNecItBlack()),
+            const SizedBox(height: 10),
+            _ValidateTaskBodyForm(),
+          ],
+        ),
       ),
     );
   }
 }
 
+// ignore: must_be_immutable
 class _ValidateTaskBodyForm extends ConsumerWidget {
-  const _ValidateTaskBodyForm();
+  _ValidateTaskBodyForm();
+
+  final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
+  String? selectedValue = null;
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final solicitudesEnviadas = ref.watch(solicitudesEnviadasProvider);
 
     return Form(
+      key: _formKey,
       child: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 15),
         child: Column(
@@ -73,7 +80,7 @@ class _ValidateTaskBodyForm extends ConsumerWidget {
                         maxLines: 1,
                         softWrap: true,
                         style: TextStyle(
-                            fontWeight: FontWeight.w600, fontSize: 12),
+                            fontWeight: FontWeight.w500, fontSize: 12),
                       ),
                     ),
                   );
@@ -82,12 +89,30 @@ class _ValidateTaskBodyForm extends ConsumerWidget {
                 error: (_, __) => [],
               ),
               onChanged: (value) {
-                // Actualiza el estado del formulario
+                selectedValue = value;
               },
             ),
             const SizedBox(height: 30),
             ElevatedButton.icon(
-              onPressed: () {},
+              onPressed: () {
+                if (selectedValue != null) {
+                  ScaffoldMessenger.of(context).showSnackBar(
+                    const SnackBar(
+                      content: Text('Solicitud validada'),
+                      backgroundColor: Colors.green,
+                    ),
+                  );
+                  _formKey.currentState?.reset();
+                  selectedValue = null;
+                } else {
+                  ScaffoldMessenger.of(context).showSnackBar(
+                    const SnackBar(
+                      content: Text('Seleccione una solicitud'),
+                      backgroundColor: Colors.red,
+                    ),
+                  );
+                }
+              },
               icon: const Icon(Icons.check_box),
               label: const Text('Validar'),
             ),
